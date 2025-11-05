@@ -23,23 +23,16 @@ pipeline {
 
     post {
         success {
-            echo "Build Successful!"
-            emailext(
-                to: 'Dpatel2297@conestogac.on.ca', 
-                from: 'dhruvp3008@gmail.com',
-                subject: "SUCCESS: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "The build was successful!\nCheck details here: ${env.BUILD_URL}"
-            )
+            mail to: 'Dpatel2297@conestogac.on.ca', 
+            from: 'dhruvp3008@gmail.com',
+            subject: "SUCCESS: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "The build was successful!\nCheck details here: ${env.BUILD_URL}"
         }
         failure {
-            echo "Build Failed!"
-            emailext(
-                to: 'Dpatel2297@conestogac.on.ca', 
-                from: 'dhruvp3008@gmail.com' ,
-                subject: "FAILURE: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: "The build failed!\nCheck details here: ${env.BUILD_URL}",
-                attachLog: true  
-            )
+            mail to: 'Dpatel2297@conestogac.on.ca', 
+            from: 'dhruvp3008@gmail.com',
+            subject: "FAILURE: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "The build failed!\nCheck details here: ${env.BUILD_URL}"
         }
     }
 }
