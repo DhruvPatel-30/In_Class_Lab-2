@@ -25,7 +25,8 @@ pipeline {
         success {
             echo "Build Successful!"
             emailext(
-                to: 'dhruvp3008@gmail.com', 
+                to: 'Dpatel2297@conestogac.on.ca', 
+                from: 'dhruvp3008@gmail.com'
                 subject: "SUCCESS: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "The build was successful!\nCheck details here: ${env.BUILD_URL}"
             )
@@ -33,7 +34,8 @@ pipeline {
         failure {
             echo "Build Failed!"
             emailext(
-                to: 'dhruvp3008@gmail.com',  
+                to: 'Dpatel2297@conestogac.on.ca', 
+                from: 'dhruvp3008@gmail.com' ,
                 subject: "FAILURE: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "The build failed!\nCheck details here: ${env.BUILD_URL}",
                 attachLog: true  
